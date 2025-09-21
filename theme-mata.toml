@@ -1,0 +1,14 @@
+
+name = "Axoloti"
+license = "GPL-3.0-only"
+licenselink = "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
+description = "Official theme of Allay"
+homepage = "https://github.com/PKUSoftwareEngineeringTeam/Axolotl"
+demosite = "https://github.com/PKUSoftwareEngineeringTeam/Axolotl-Wiki"
+
+tags = ["clean", "light", "personal"]
+min_version = "0.1.0"
+
+[author]
+name = "EmbroiderSnow"
+homepage = "https://github.com/EmbroiderSnow" 

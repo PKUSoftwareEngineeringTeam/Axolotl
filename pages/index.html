@@ -1,0 +1,20 @@
+{- include "header.html" -}
+
+<div class="post-list">
+    <h2>Recent Posts</h2>
+    <ul>
+        {- for $page: GLOBAL.PAGES -}
+            {- with $page -}
+            <li>
+                <a href="{: .url :}" class="post-link">
+                    <h3 class="post-title">{: .title :}</h3>
+                    <p class="post-description">{: .description :}</p>
+                    <span class="post-date">{: .date :}</span>
+                </a>
+            </li>
+            {- end -}
+        {- end -}
+    </ul>
+</div>
+
+{- include "footer.html" -}
