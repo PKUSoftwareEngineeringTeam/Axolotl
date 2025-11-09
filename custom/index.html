@@ -1,27 +1,23 @@
+<meta charset="UTF-8">
 <html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{- if this.title != null -}{: this.title :}{- end -}</title>
-    <!-- 动态描述 -->
-    {- if this.description != null -}
-        <meta name="description" content="{: this.description :}">
-    {- end -}
-    <!-- CSS -->
+    <title>Allay & Axolotl 主题博客</title>
     <link rel="stylesheet" href="/style_official.css">
-    
 </head>
 <body>
-    <!-- 导航栏 - 与index.html保持一致 -->
     <header class="header">
         <nav class="nav container">
             <a href="/" class="nav-brand">
-                <span class="axolotl-gradient">Allay Blog</span>
+                <span class="axolotl-gradient">{: site.title :}</span>
             </a>
+            
             <ul class="nav-menu">
-                {- for $page : pages -}
-                <li><a href="{: $page.url :}" class="nav-link">{: $page.title :}</a></li>
-                {- end -}
+                <li><a href="/" class="nav-link active">首页</a></li>
+                <li><a href="/blog" class="nav-link">博客</a></li>
+                <li><a href="/about" class="nav-link">关于</a></li>
+                <li><a href="/contact" class="nav-link">联系</a></li>
                 <li>
                     <div class="theme-switcher" id="themeToggle" aria-label="切换主题"></div>
                 </li>
@@ -35,16 +31,13 @@
         </nav>
     </header>
 
-    <!-- 主要内容区域 -->
     <main class="main container">
         <article class="article fade-in">
-            <div class="main-content">
-                {: .content :}
-            </div>
+            <h1>欢迎来到 Allay & Axolotl 主题博客</h1>
+            <p>这里融合了Minecraft中Allay的蓝色魅力和Axolotl的粉色活力...</p>
         </article>
     </main>
 
-    <!-- 引入相同的JavaScript文件 -->
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
