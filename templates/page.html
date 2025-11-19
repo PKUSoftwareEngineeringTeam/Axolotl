@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>{- if this.title != null -}{: this.title :} · {: site.title :}{- else -}{: site.title :}{- end -}</title>
+
+
+    {- if this.description != null -}
+    <meta name="description" content="{: this.description :}" />
+    {- end -}
+
+    <link rel="stylesheet" href="/style_official.css" />
+  </head>
+
+  <body>
+    <!-- 顶部导航：和 index.html 保持风格一致 -->
+
+    <header class="header">
+      <nav class="nav container">
+        <a href="/" class="nav-brand">
+          <span class="axolotl-gradient">{: site.title :}</span>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">首页</a></li>
+          <li><a href="/blog.html" class="nav-link">博客</a></li>
+          <li><a href="/about" class="nav-link">关于</a></li>
+          <li><a href="/contact" class="nav-link">联系</a></li>
+        </ul>
+
+        <button class="nav-toggle" aria-label="切换菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div
+          class="theme-switcher"
+          id="themeToggle"
+          aria-label="切换主题"
+        ></div>
+      </nav>
+    </header>
+
+    <!-- 主体内容区域：用于渲染 a.md / b.md 等 -->
+
+    <main class="main">
+      <div class="container">
+        <article class="article fade-in">
+          <header class="article-header">
+            {- if this.title != null -}
+            <h1 class="article-title">{: this.title :}</h1>
+            {- end -}
+
+            {- if this.date != null -}
+            <p class="article-meta">发布日期：{: this.date :}</p>
+            {- end -}
+          </header>
+
+          <div class="article-content">
+            {: .content :}
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© {: site.title :}</span>
+        <span>由 Allay & Axolotl 主题驱动</span>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
