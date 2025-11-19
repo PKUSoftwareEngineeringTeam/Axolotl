@@ -1,4 +1,3 @@
-// 主题切换功能
 class ThemeManager {
     constructor() {
         this.themes = ['light', 'dark', 'axolotl'];
@@ -7,7 +6,6 @@ class ThemeManager {
         this.init();
     }
     
-    // 添加主题验证方法
     isValidTheme(theme) {
         return this.themes.includes(theme);
     }
@@ -37,7 +35,6 @@ class ThemeManager {
     }
 }
 
-// 移动端导航切换
 class MobileMenu {
     constructor() {
         this.menu = document.querySelector('.nav-menu');
@@ -59,7 +56,6 @@ class MobileMenu {
     }
 }
 
-// 初始化
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
     new MobileMenu();
