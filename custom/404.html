@@ -7,19 +7,12 @@
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>{- if this.title != null -}{: this.title :} · {: site.title :}{- else -}{: site.title :}{- end -}</title>
-
-
-    {- if this.description != null -}
-    <meta name="description" content="{: this.description :}" />
-    {- end -}
-
+    <title>404 · {: site.title :}</title>
     <link rel="stylesheet" href="/style_official.css" />
   </head>
 
   <body>
-    <!-- 顶部导航：和 index.html 保持风格一致 -->
-
+    <!-- 顶部导航 -->
     <header class="header">
       <nav class="nav container">
         <a href="/" class="nav-brand">
@@ -28,7 +21,7 @@
 
         <ul class="nav-menu">
           <li><a href="/" class="nav-link">首页</a></li>
-          <li><a href="/blog.html" class="nav-link">博客</a></li>
+          <li><a href="/blog" class="nav-link">博客</a></li>
           <li><a href="/about" class="nav-link">关于</a></li>
           <li><a href="/contact" class="nav-link">联系</a></li>
         </ul>
@@ -47,30 +40,26 @@
       </nav>
     </header>
 
-    <!-- 主体内容区域：用于渲染 a.md / b.md 等 -->
-
+    <!-- 主体内容：404 卡片 -->
     <main class="main">
       <div class="container">
-        <article class="article fade-in">
-          <header class="article-header">
-            {- if this.title != null -}
-            <h1 class="article-title">{: this.title :}</h1>
-            {- end -}
+        <section class="article error-page fade-in">
+          <div class="error-icon">🧩</div>
 
-            {- if this.date != null -}
-            <p class="article-meta">发布日期：{: this.date :}</p>
-            {- end -}
-          </header>
+          <h1 class="error-code">404</h1>
+          <h2 class="error-title">页面未找到</h2>
+          <p class="error-text">
+            抱歉，您访问的页面似乎已经移走、被删除，或者从来没有存在过。
+          </p>
 
-          <div class="article-content">
-            {: .content :}
+          <div class="error-actions">
+            <a href="/" class="btn btn-primary">返回首页</a>
           </div>
-        </article>
+        </section>
       </div>
     </main>
 
     <!-- 页脚 -->
-
     <footer class="site-footer">
       <div class="container">
         <span>© {: site.title :}</span>
