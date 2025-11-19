@@ -1,72 +1,25 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+{- include "head" this "404" -}
 
-    <title>404 · {: site.title :}</title>
-    <link rel="stylesheet" href="/style_official.css" />
-  </head>
+<body>
+  {- include "headbar" -}
 
-  <body>
-    <!-- 顶部导航 -->
-    <header class="header">
-      <nav class="nav container">
-        <a href="/" class="nav-brand">
-          <span class="axolotl-gradient">{: site.title :}</span>
-        </a>
+  <main class="main">
+    <div class="container">
+      <section class="article error-page fade-in">
+        <div class="error-icon">🧩</div>
 
-        <ul class="nav-menu">
-          <li><a href="/" class="nav-link">首页</a></li>
-          <li><a href="/blog" class="nav-link">博客</a></li>
-          <li><a href="/about" class="nav-link">关于</a></li>
-          <li><a href="/contact" class="nav-link">联系</a></li>
-        </ul>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">页面未找到</h2>
+        <p class="error-text">
+          抱歉，您访问的页面似乎已经移走、被删除，或者从来没有存在过。
+        </p>
 
-        <button class="nav-toggle" aria-label="切换菜单">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="error-actions">
+          <a href="/" class="btn btn-primary">返回首页</a>
+        </div>
+      </section>
+    </div>
+  </main>
 
-        <div
-          class="theme-switcher"
-          id="themeToggle"
-          aria-label="切换主题"
-        ></div>
-      </nav>
-    </header>
-
-    <!-- 主体内容：404 卡片 -->
-    <main class="main">
-      <div class="container">
-        <section class="article error-page fade-in">
-          <div class="error-icon">🧩</div>
-
-          <h1 class="error-code">404</h1>
-          <h2 class="error-title">页面未找到</h2>
-          <p class="error-text">
-            抱歉，您访问的页面似乎已经移走、被删除，或者从来没有存在过。
-          </p>
-
-          <div class="error-actions">
-            <a href="/" class="btn btn-primary">返回首页</a>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="site-footer">
-      <div class="container">
-        <span>© {: site.title :}</span>
-        <span>由 Allay & Axolotl 主题驱动</span>
-      </div>
-    </footer>
-
-    <script src="/script.js"></script>
-  </body>
-</html>
+  {- include "footer" -}
+</body>

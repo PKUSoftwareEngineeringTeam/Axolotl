@@ -1,108 +1,33 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{: site.title :}</title>
+    <link rel="stylesheet" href="/index.css" />
+</head>
 
-    {- if site.description != null -}
-    <meta name="description" content="{: site.description :}" />
-    {- end -}
+<body>
+    {- include "headbar" -}
 
-    <link rel="stylesheet" href="/style_official.css" />
-  </head>
+    <!-- 背景和内容 -->
+    <div class="background-container">
+        <div class="background-image"></div>
+        <div class="overlay"></div>
+        <div class="particles" id="particles"></div>
+    </div>
 
-  <body>
-    <!-- 顶部导航，与 page.html 保持一致，首页高亮 -->
-    <header class="header">
-      <nav class="nav container">
-        <a href="/" class="nav-brand">
-          <span class="axolotl-gradient">{: site.title :}</span>
-        </a>
+    <div class="content">
+        <h1 class="title">{: site.title :}</h1>
+        <p class="subtitle">{: site.subtitle :}</p>
 
-        <ul class="nav-menu">
-          <li><a href="/" class="nav-link active">首页</a></li>
-          <li><a href="/blog.html" class="nav-link">博客</a></li>
-          <li><a href="/about" class="nav-link">关于</a></li>
-          <li><a href="/contact" class="nav-link">联系</a></li>
-        </ul>
+        <div class="buttons-container">
+            <a href="/blog.html" class="floating-btn btn-1">博客</a>
+            <a href="/about.html" class="floating-btn btn-2">关于</a>
+            <a href="/contact.html" class="floating-btn btn-3">联系</a>
+            <a href="https://github.com/PKUSoftwareEngineeringTeam" class="floating-btn btn-4">了解Allay</a>
+        </div>
+    </div>
 
-        <button class="nav-toggle" aria-label="切换菜单">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <script src="/index.js"></script>
+</body>
 
-        <div
-          class="theme-switcher"
-          id="themeToggle"
-          aria-label="切换主题"
-        ></div>
-      </nav>
-    </header>
-
-    <!-- 主体区域 -->
-    <main class="main">
-      <div class="container">
-        <!-- Hero 区 -->
-        <section class="hero fade-in">
-          <h1 class="hero-title">{: site.title :}</h1>
-          <p class="hero-subtitle">
-            {- if site.description != null -}
-            {: site.description :}
-            {- else -}
-            这里是一句简短的副标题介绍。
-            {- end -}
-          </p>
-        </section>
-
-        <!-- 页面列表卡片：自动列出站点中的页面 -->
-        {- if pages != null -}
-        <section class="article fade-in" aria-labelledby="index-pages">
-          <header class="article-header">
-            <h2 class="article-title" id="index-pages">站点页面</h2>
-            <p class="article-meta">
-              这些是当前站点中的页面，你可以点击快速跳转。
-            </p>
-          </header>
-
-          <div class="article-content">
-            <ul>
-              {- for $p : pages -}
-              {- if $p.url != "/" -}
-              <li>
-                <a href="{: $p.url :}">
-                  {- if $p.title != null -}
-                  {: $p.title :}
-                  {- else -}
-                  {: $p.url :}
-                  {- end -}
-                </a>
-                {- if $p.description != null -}
-                — {: $p.description :}
-                {- end -}
-              </li>
-              {- end -}
-              {- end -}
-            </ul>
-          </div>
-        </section>
-        {- end -}
-      </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="site-footer">
-      <div class="container">
-        <span>© {: site.title :}</span>
-        <span>由 Allay & Axolotl 主题驱动</span>
-      </div>
-    </footer>
-
-    <script src="/script.js"></script>
-  </body>
 </html>
