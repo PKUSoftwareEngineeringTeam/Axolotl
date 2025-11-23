@@ -9,7 +9,7 @@
     width: 200px;
 
     /* 高度限制：避免底部超出屏幕 */
-    max-height: calc(100vh - 150px);
+    max-height: 70vh;
     overflow-y: auto;
 
     /* 视觉风格 */
@@ -67,12 +67,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.25s ease-in-out;
 }
 
 .toc-sidebar a:hover {
     color: var(--accent-strong);
+    /* 使用强调色文字 */
     background: var(--accent-soft);
+    /* 使用强调色背景 */
+    font-weight: 600;
+    /* 稍微加粗 */
+    border-left: 3px solid var(--accent-strong);
+    /* 左侧加一个指示条，增强视觉提示 */
+    padding-left: 5px;
     white-space: normal;
+
+
+    overscroll-behavior: contain;
     /* 悬停时展开文字 */
 }
 
@@ -81,4 +92,15 @@
     margin-left: 8px;
     border-left: 2px solid transparent;
     opacity: 0.8;
+}
+
+.toc-sidebar a.active {
+    color: var(--accent-strong);
+    font-weight: 600;
+    /* 稍微加粗 */
+}
+
+.toc-title {
+    cursor: pointer;
+    transition: color 0.2s;
 }
