@@ -11,12 +11,12 @@
     <div class="container">
       <article class="article fade-in">
         <header class="article-header">
-          {- if this.title != null -}
-          <h1 class="article-title">{: this.title :}</h1>
+          {- with .title -}
+          <h1 class="article-title">{: this :}</h1>
           {- end -}
 
-          {- if this.date != null -}
-          <p class="article-meta">发布日期：{: this.date :}</p>
+          {- with .date -}
+          <p class="article-meta">发布日期：{: this :}</p>
           {- end -}
         </header>
 
@@ -24,7 +24,9 @@
           {: .content :}
         </div>
       </article>
-    </div>
+
+      {- include "gitalk" -}
+     </div>
   </main>
 
   {- include "footer" -}
