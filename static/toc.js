@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
             top: 0,
             behavior: 'smooth'
         });
+        tocContainer.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
 
         setTimeout(() => {
             isClicking = false;
