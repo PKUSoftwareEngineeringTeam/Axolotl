@@ -10,34 +10,20 @@
     <main class="main">
         <div class="container">
             <h1>关于我</h1>
-            <article class="article fade-in">
-                <header class="article-header">
-                    {- if this.title != null -}
-                    <h1 class="article-title">{: this.title :}</h1>
-                    {- end -}
+            {- include "article" -}
 
-                    {- if this.date != null -}
-                    <p class="article-meta">发布日期：{: this.date :}</p>
-                    {- end -}
-                </header>
-
-                <div class="article-content">
-                    {: .content :}
-                </div>
-            </article>
-
-            {- if .friends != null -}
-                <div class="friends-section">
-                    <h2 class="friends-title">友情链接</h2>
-                    <div class="friends-list">
-                        {- for $f: .friends -}
-                        <div class="friend-block">
-                            <a href="{: $f.url :}" class="friend-link">{: $f.name :}</a>
-                            <p class="friend-intro">{: $f.intro :}</p>
-                        </div>
-                        {- end -}
+            {- with .friends -}
+            <div class="friends-section">
+                <h2 class="friends-title">友情链接</h2>
+                <div class="friends-list">
+                    {- for $f: this -}
+                    <div class="friend-block">
+                        <a href="{: $f.url :}" class="friend-link">{: $f.name :}</a>
+                        <p class="friend-intro">{: $f.intro :}</p>
                     </div>
+                    {- end -}
                 </div>
+            </div>
             {- end -}
         </div>
     </main>
