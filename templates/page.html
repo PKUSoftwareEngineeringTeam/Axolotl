@@ -1,34 +1,17 @@
 {- include "head" this this.title -}
 
-<head>
-  <link rel="stylesheet" href="toc.css" />
-</head>
-
 <body>
   {- include "headbar" -}
-
   <main class="main">
     <div class="container">
-      <article class="article fade-in">
-        <header class="article-header">
-          {- with .title -}
-          <h1 class="article-title">{: this :}</h1>
-          {- end -}
-
-          {- with .date -}
-          <p class="article-meta">发布日期：{: this :}</p>
-          {- end -}
-        </header>
-
-        <div class="article-content">
-          {: .content :}
-        </div>
-      </article>
+      {- include "article" -}
 
       {- include "gitalk" -}
-     </div>
+    </div>
   </main>
 
   {- include "footer" -}
+
+  <link rel="stylesheet" href="toc.css" />
   <script src="toc.js"></script>
 </body>

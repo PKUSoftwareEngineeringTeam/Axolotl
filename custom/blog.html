@@ -14,29 +14,28 @@
           </p>
         </div>
 
-        <a href="blog.html" class="blog-header-link">
+        <a href="blog" class="blog-header-link">
           View all posts by years →
         </a>
       </section>
 
       <section class="blog-list fade-in" aria-label="博客列表">
         {- for $p : pages -}
-        {- if $p.url != null -}
         <a href="{: $p.url :}" class="blog-card">
           <div class="blog-card-main">
             <div class="blog-card-meta">
-              {- if $p.date != null -}
-              <span class="blog-card-date">{: $p.date :}</span>
+              {- with $p.date -}
+              <span class="blog-card-date">{: this :}</span>
               {- end -}
 
-              {- if $p.reading_time != null -}
+              {- with $p.reading_time -}
               <span class="blog-card-sep">·</span>
-              <span class="blog-card-read">{: $p.reading_time :}</span>
+              <span class="blog-card-read">{: this :}</span>
               {- end -}
 
-              {- if $p.lang != null -}
+              {- with $p.lang -}
               <span class="blog-card-sep">·</span>
-              <span class="blog-card-lang">{: $p.lang :}</span>
+              <span class="blog-card-lang">{: this :}</span>
               {- end -}
             </div>
 
@@ -48,15 +47,15 @@
               {- end -}
             </h2>
 
-            {- if $p.description != null -}
+            {- with $p.description -}
             <p class="blog-card-excerpt">
-              {: $p.description :}
+              {: this :}
             </p>
             {- end -}
 
-            {- if $p.tags != null -}
+            {- with $p.tags -}
             <div class="blog-card-tags">
-              {- for $tag : $p.tags -}
+              {- for $tag : this -}
               <span class="tag-pill">{: $tag :}</span>
               {- end -}
             </div>
@@ -65,7 +64,6 @@
 
           <div class="blog-card-arrow">➜</div>
         </a>
-        {- end -}
         {- end -}
       </section>
     </div>
