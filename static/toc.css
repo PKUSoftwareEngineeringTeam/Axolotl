@@ -69,6 +69,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.25s ease-in-out;
+    border-bottom: none;
 }
 
 .toc-sidebar a:hover {

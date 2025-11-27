@@ -9,6 +9,7 @@
   --accent: #2563eb;
   --accent-soft: #dbeafe;
   --accent-strong: #1d4ed8;
+  --accent-hover: #fb7185;
   --h: #232974;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
   --radius-xl: 1.5rem;
@@ -25,18 +26,47 @@ body {
   color: var(--fg);
 }
 
-/* 链接基础样式 */
+/* =============================
+   链接样式 
+   ============================= */
 
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+
+  border-bottom: 1px solid rgba(37, 99, 235, 0.35);
+
+  background-image: linear-gradient(to top, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.15));
+
+  background-size: 100% 0%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  padding: 0 2px;
+  margin: 0 -2px;
+
+  transition:
+    background-size 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s ease-in-out,
+    border-bottom-color 0.2s;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--accent-strong);
+
+  background-size: 100% 100%;
+  border-bottom-color: transparent;
+  text-decoration: none;
 }
 
+.nav-link,
+.blog-header-link,
+.nav-brand {
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+  background: none !important;
+}
 /* ===== 通用布局 ===== */
 
 .container {
@@ -213,17 +243,63 @@ a:hover {
   margin-bottom: 1.4rem;
 }
 
+
 .article-title {
   position: relative;
-  font-size: 1.9rem;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 1.0rem -1.2rem;
+  padding: 0.5rem 0 0.5rem 1.2rem;
 
-  margin: 0 0 0.6rem -0.8rem;
-  padding: 0.55rem 0.8rem 0.55rem 0.8rem;
-  width: calc(100% + 1.6rem);
-  box-sizing: border-box;
   color: var(--h);
-  background: var(--accent-soft);
-  border-radius: 0.6rem;
+
+  background: transparent;
+  border-radius: 0;
+  width: 100%;
+  cursor: text;
+}
+
+.article-title:hover,
+.article-title:focus,
+.article-title:active {
+  background: transparent !important;
+  border-bottom: none !important;
+  color: var(--h) !important;
+  box-shadow: none !important;
+}
+
+.article-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 6px;
+  background: linear-gradient(180deg,
+      var(--accent-strong),
+      var(--accent-hover),
+      var(--accent-strong));
+
+  background-size: 100% 200%;
+
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.article-title:hover::before {
+  animation: gradientFlow 1.5s linear infinite;
+  width: 8px;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 0% 200%;
+  }
 }
 
 .article-meta {
@@ -272,10 +348,26 @@ a:hover {
 
 /* H1: emphasized background + left accent */
 .article-content h1 {
-  font-size: 2.0rem;
+  font-size: 1.8rem;
+  font-weight: 700;
   color: var(--h);
-  background: var(--accent-soft);
-  border-radius: 0.6rem;
+  margin: 2.5rem 0 1.2rem -1.0rem;
+  padding: 0 0 0 1.0rem;
+  background: transparent;
+  border-radius: 0;
+  position: relative;
+}
+
+.article-content h1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 5px;
+  background: linear-gradient(180deg, var(--accent-strong), var(--accent-hover));
+  border-radius: 3px;
+  opacity: 0.8;
 }
 
 /* H2: subtle left accent */
@@ -485,11 +577,23 @@ a:hover {
     align-items: flex-start;
   }
 
-  .article-title {
-    margin-left: 0;
-    width: 100%;
-    padding-left: 0.8rem;
-  }
+.article-title {
+  font-size: 1.7rem;
+  margin-left: 0;
+  padding-left: 1rem;
+
+}
+
+.article-content h1 {
+  font-size: 1.5rem;
+  margin-left: 0;
+  padding-left: 0.8rem;
+}
+
+
+.article-title::before {
+  width: 4px;
+}
 
   .article-content h2 {
     margin-left: 0;
@@ -584,22 +688,55 @@ a:hover {
   align-items: stretch;
   padding: 1.6rem 1.5rem;
   margin-bottom: 1.3rem;
+
   background: #f2f2ff;
   border-radius: 1.4rem;
+
   border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: 0 3px 5px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
   text-decoration: none;
   color: #333333;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-    border-color 0.12s ease-out, background 0.12s ease-out;
+
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease-out,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
 }
 
+/* 悬停状态 */
 .blog-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 5px rgba(15, 23, 42, 0.2);
-  border-color: rgba(248, 250, 252, 0.25);
-  text-decoration: none;
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  border-color: var(--accent);
+
 }
+
+.blog-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+  padding-left: 0.5rem;
+
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* 悬停时，箭头向右移动并变色 */
+.blog-card:hover .blog-card-arrow {
+  color: var(--accent);
+  transform: translateX(6px);
+}
+
 
 /* 左侧主内容 */
 
@@ -667,22 +804,6 @@ a:hover {
   display: flex;
   gap: 0.35rem;
   flex-wrap: wrap;
-}
-
-/* 右侧箭头 */
-
-.blog-card-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: #333333;
-  flex-shrink: 0;
-  padding-left: 0.5rem;
-}
-
-.blog-card:hover .blog-card-arrow {
-  color: #555555;
 }
 
 /* 小屏缩进一点 */
