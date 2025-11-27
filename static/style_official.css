@@ -9,6 +9,7 @@
   --accent: #2563eb;
   --accent-soft: #dbeafe;
   --accent-strong: #1d4ed8;
+  --h: #232974;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
   --radius-xl: 1.5rem;
   --radius-lg: 1rem;
@@ -213,14 +214,33 @@ a:hover {
 }
 
 .article-title {
-  font-size: 1.8rem;
-  margin: 0 0 0.5rem;
+  position: relative;
+  font-size: 1.9rem;
+
+  margin: 0 0 0.6rem -0.8rem;
+  padding: 0.55rem 0.8rem 0.55rem 0.8rem;
+  width: calc(100% + 1.6rem);
+  box-sizing: border-box;
+  color: var(--h);
+  background: var(--accent-soft);
+  border-radius: 0.6rem;
 }
 
 .article-meta {
   margin: 0;
   font-size: 0.85rem;
   color: var(--fg-muted);
+}
+
+.article-meta time.article-date {
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+.blog-card-date time.article-date {
+  color: var(--fg-muted);
+  font-weight: 500;
+  display: inline-block;
 }
 
 /* 文章正文排版 */
@@ -231,18 +251,62 @@ a:hover {
   color: var(--fg);
 }
 
-.article-content p {
-  margin: 0 0 1.0rem;
+.article-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  position: relative;
+  margin: 1.4rem 0 0.6rem -0.8rem;
+  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+  width: calc(100% + 1.6rem);
+  box-sizing: border-box;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: rgba(62,55,71,0.06); /* soft background based on --h */
+  border-radius: 0.45rem;
+}
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  position: relative;
 }
 
-.article-content h2 {
-  font-size: 1.35rem;
-  margin: 1.6rem 0 0.8rem;
+/* H1: emphasized background + left accent */
+.article-content h1 {
+  font-size: 2.0rem;
+  color: var(--h);
+  background: var(--accent-soft);
+  border-radius: 0.6rem;
 }
+
+/* H2: subtle left accent */
+.article-content h2 {
+  color: var(--h);
+}
+
+/* subtle hover/focus effect for accessibility */
+.article-content h1:focus,
+.article-content h1:hover,
+.article-title:hover,
+.article-title:focus {
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+/* reduce visual emphasis for low-contrast & small screen */
+@media (prefers-reduced-motion: reduce) {
+  .article-content h1:focus,
+  .article-content h1:hover,
+  .article-title:hover,
+  .article-title:focus {
+    box-shadow: none;
+  }
+}
+
+/* H3: lighter color accent */
 
 .article-content h3 {
   font-size: 1.15rem;
   margin: 1.4rem 0 0.6rem;
+  color: var(--h);
 }
 
 .article-content ul,
@@ -257,32 +321,77 @@ a:hover {
 
 /* 行内代码 & 代码块 */
 
+/* =============================
+   优化后的代码块样式
+   ============================= */
+
+/* 1. 行内代码 (Inline Code) - 类似 Notion/GitHub 风格 */
 .article-content code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  background: rgba(15, 23, 42, 0.06);
-  padding: 0.15rem 0.3rem;
-  border-radius: 0.35rem;
-  font-size: 0.9em;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #7635c6;
+  background: rgba(15, 23, 42, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 0.375rem;
+  font-size: 0.87em;
+  vertical-align: middle;
+  border: 1px solid rgba(148, 163, 184, 0.15);
 }
 
 .article-content pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  background: #f5f7fb;
-  color: #020617;
-  padding: 1.0rem 1.1rem;
-  border-radius: 0.9rem;
-  overflow-x: auto;
-  font-size: 0.88rem;
+  position: relative;
+  /* 为绝对定位的圆点做参照 */
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: #fafafa;
+  /* 比纯白略灰，区分背景 */
+  color: #24292e;
+  /* 经典 GitHub 代码灰黑色 */
 
-  code {
-    background: none;
-    padding: 0;
-    border-radius: 0;
-  }
+  /* 顶部留出空间给“红黄绿”圆点 */
+  padding: 0.8rem 0.8rem 0.8rem;
+
+  border-radius: 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  /* 极淡的阴影 */
+
+  overflow-x: auto;
+  /* 横向滚动 */
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
+.article-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  border: none;
+  font-size: inherit;
+  vertical-align: baseline;
+}
+
+
+.article-content pre::-webkit-scrollbar {
+  height: 6px;
+  /* 横向滚动条高度 */
+  width: 6px;
+}
+
+.article-content pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.article-content pre::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  /* 滚动条颜色 */
+  border-radius: 4px;
+}
+
+.article-content pre::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.6);
+  /* 悬停加深 */
+}
 /* 引用块 */
 
 .article-content blockquote {
@@ -375,6 +484,28 @@ a:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .article-title {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0.8rem;
+  }
+
+  .article-content h2 {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0.8rem;
+  }
+}
+
+
+/* Ensure all headings use the configured --h color */
+.article-title,
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  color: var(--h) !important;
+  
 }
 
 /* ===== 404 页面 ===== */
@@ -526,8 +657,16 @@ a:hover {
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.55);
   font-size: 0.75rem;
-  color: #555555;
-  background: rgba(15, 23, 42, 0.85);
+  color: #fdfdfd;
+  background: rgba(90, 115, 172, 0.85);
+}
+
+/* 文章页上方 tags（小胶囊） */
+.article-tags {
+  margin-bottom: 0.6rem;
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
 }
 
 /* 右侧箭头 */

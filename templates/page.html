@@ -11,12 +11,21 @@
     <div class="container">
       <article class="article fade-in">
         <header class="article-header">
+          {- if this.tags != null -}
+          <div class="blog-card-tags article-tags">
+            {- for $tag : this.tags -}
+            <span class="tag-pill">{: $tag :}</span>
+            {- end -}
+          </div>
+          {- end -}
           {- if this.title != null -}
           <h1 class="article-title">{: this.title :}</h1>
           {- end -}
 
           {- if this.date != null -}
-          <p class="article-meta">发布日期：{: this.date :}</p>
+          <p class="article-meta">发布日期：
+            <time class="article-date" datetime="{: this.date :}">{: this.date :}</time>
+          </p>
           {- end -}
         </header>
 

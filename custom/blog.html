@@ -26,7 +26,7 @@
           <div class="blog-card-main">
             <div class="blog-card-meta">
               {- if $p.date != null -}
-              <span class="blog-card-date">{: $p.date :}</span>
+              <span class="blog-card-date"><time class="article-date" datetime="{: $p.date :}">{: $p.date :}</time></span>
               {- end -}
 
               {- if $p.reading_time != null -}
