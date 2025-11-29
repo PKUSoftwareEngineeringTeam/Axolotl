@@ -3,12 +3,15 @@
     --bg-elevated: rgba(255, 255, 255, 0.86);
     --fg: #111827;
     --fg-muted: #4b5563;
-    --border-subtle: rgba(148, 163, 184, 0.35);
     --accent: #2563eb;
     --accent-soft: #dbeafe;
     --accent-strong: #1d4ed8;
     --accent-hover: #fb7185;
+    --bright-blue: #38bdf8;
     --h: #232974;
+    --color-slate-rgb: 148, 163, 184;
+    --color-blue-accent-rgb: 219, 234, 254;
+    --border-subtle: rgba(var(--color-slate-rgb), 0.35);
     --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
     --radius-xl: 1.5rem;
     --radius-lg: 1rem;
@@ -134,7 +137,7 @@ a:hover {
 }
 
 .btn-primary {
-    background: linear-gradient(120deg, #38bdf8, #fb7185);
+    background: linear-gradient(120deg, var(--bright-blue), var(--accent-hover));
     color: #ffffff;
     box-shadow: 0 14px 30px rgba(56, 189, 248, 0.25);
 }
