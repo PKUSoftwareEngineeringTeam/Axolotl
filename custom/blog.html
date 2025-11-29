@@ -2,7 +2,10 @@
 {- include "head" this $title -}
 
 <body>
-  {- include "headbar" -}
+  {- include "nav" -}
+
+  <link rel="stylesheet" href="/css/blog.css" />
+  <script src="/js/blog.js"></script>
 
   <main class="main">
     <div class="container">
@@ -19,7 +22,7 @@
         </a>
       </section>
 
-      <section class="blog-list fade-in" aria-label="博客列表">
+      <section class="blog-list fade-in" aria-label="博客列表" id="blogList">
         {- for $p : pages -}
         <a href="{: $p.url :}" class="blog-card">
           <div class="blog-card-main">
@@ -28,14 +31,16 @@
               <span class="blog-card-date">{: this :}</span>
               {- end -}
 
-              {- with $p.reading_time -}
               <span class="blog-card-sep">·</span>
-              <span class="blog-card-read">{: this :}</span>
-              {- end -}
+              <span class="blog-card-read"></span>
 
               {- with $p.lang -}
               <span class="blog-card-sep">·</span>
               <span class="blog-card-lang">{: this :}</span>
+              {- end -}
+              
+              {- with $p.group -}
+              <div data-group="{: this :}"></div>
               {- end -}
             </div>
 
