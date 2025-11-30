@@ -3,30 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{- if param.0 != null -} {: param.0 :} {- else -} {: site.title :} {- end -}</title>
 
-    <script>
-        document.addEventListener('load', function () {
-            let pairs = [
-                ['a', 'href'],
-                ['link', 'href'],
-                ['script', 'src'],
-                ['img', 'src'],
-                ['source', 'src'],
-                ['video', 'src'],
-                ['audio', 'src']
-                ['iframe', 'src']
-            ]
-
-
-            pairs.forEach(([tag, attr]) => {
-                document.querySelectorAll(tag).forEach(element => {
-                    let link = element.getAttribute(attr);
-                    if (link && link.startsWith('/')) {
-                        element.setAttribute(attr, "{: site.base_url :}".trim() + link.substring(1));
-                    }
-                });
-            });
-        });
-    </script>
-
     <link rel="stylesheet" href="/css/base.css" />
+    <script src="/js/base.js" defer></script>
 </head>
+
+<body>
+    <div id="site-meta" data-base="{: site.base_url :}"></div>
+</body>
