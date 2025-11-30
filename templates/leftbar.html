@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/leftbar.css" />
+<script src="/js/leftbar.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<aside class="blog-sidebar fade-in">
+    <div class="avatar-container">
+        <img src="/avatar.png" alt="头像" class="avatar">
+    </div>
+
+    <h2 class="name">{: site.author :}</h2>
+    <p class="title">{: site.intro :}</p>
+    <p class="bio">{: site.bio :}</p>
+
+    <div class="contact-info">
+        {- with site.email -}
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="far fa-envelope"></i>
+            </div>
+            <span class="contact-text">{: this :}</span>
+        </div>
+        {- end -}
+        {- with site.location -}
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span class="contact-text">{: this :}</span>
+        </div>
+        {- end -}
+    </div>
+
+    <div class="social-links">
+        {- with site.links.github -}
+        <a href="{: this :}" class="social-link">
+            <i class="fab fa-github"></i>
+        </a>
+        {- end -}
+        {- with site.links.twitter -}
+        <a href="{: this :}" class="social-link">
+            <i class="fab fa-twitter"></i>
+        </a>
+        {- end -}
+        {- with site.links.instagram -}
+        <a href="{: this :}" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        {- end -}
+        {- with site.links.weibo -}
+        <a href="{: this :}" class="social-link">
+            <i class="fab fa-weibo"></i>
+        </a>
+        {- end -}
+    </div>
+
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number" id="article-number">0</span>
+            <span class="stat-label">文章</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">128</span>
+            <span class="stat-label">标签</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">3年</span>
+            <span class="stat-label">博客</span>
+        </div>
+    </div>
+</aside>
