@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/nav.css" />
 
-<header class="header">
+<header class="header" id="header">
     <nav class="nav container">
         <a href="" class="nav-brand">
             <span class="axolotl-gradient">{: site.title :}</span>
@@ -28,3 +28,14 @@
         {- end -}
     </nav>
 </header>
+
+<script>
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>

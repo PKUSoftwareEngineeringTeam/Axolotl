@@ -9,70 +9,73 @@
 
   <main class="main">
     <div class="container">
-      <section class="blog-header fade-in">
-        <div class="blog-header-main">
-          <h1 class="blog-title-en">Blog</h1>
-          <p class="blog-header-meta">
-            Page 1 · Showing all posts
-          </p>
-        </div>
+      {- include "leftbar" -}
 
-        <a href="blog" class="blog-header-link">
-          View all posts by years →
-        </a>
-      </section>
-
-      <section class="blog-list fade-in" aria-label="博客列表" id="blogList">
-        {- for $p : pages -}
-        <a href="{: $p.url :}" class="blog-card">
-          <div class="blog-card-main">
-            <div class="blog-card-meta">
-              {- with $p.date -}
-              <span class="blog-card-date">{: this :}</span>
-              {- end -}
-
-              <span class="blog-card-sep">·</span>
-              <span class="blog-card-read"></span>
-
-              {- with $p.lang -}
-              <span class="blog-card-sep">·</span>
-              <span class="blog-card-lang">{: this :}</span>
-              {- end -}
-              
-              {- with $p.group -}
-              <div data-group="{: this :}"></div>
-              {- end -}
-            </div>
-
-            <h2 class="blog-card-title">
-              {- if $p.title != null -}
-              {: $p.title :}
-              {- else -}
-              未命名文章
-              {- end -}
-            </h2>
-
-            {- with $p.description -}
-            <p class="blog-card-excerpt">
-              {: this :}
-            </p>
-            {- end -}
-
-            {- with $p.tags -}
-            <div class="blog-card-tags">
-              {- for $tag : this -}
-              <span class="tag-pill">{: $tag :}</span>
-              {- end -}
-            </div>
-            {- end -}
+      <div class="main-content">
+        <section class="blog-header fade-in">
+          <div class="blog-header-main">
+            <h1 class="blog-title-en">博客列表</h1>
+            <!-- <p class="blog-header-meta">
+              Hello World.
+            </p> -->
           </div>
 
-          <div class="blog-card-arrow">➜</div>
-        </a>
-        {- end -}
-      </section>
+          <a href="blog" class="blog-header-link">
+            查找博客 →
+          </a>
+        </section>
+
+        <section class="blog-list fade-in" aria-label="博客列表" id="blogList">
+          {- for $p : pages -}
+          <a href="{: $p.url :}" class="blog-card">
+            <div class="blog-card-main">
+              <h2 class="blog-card-title">
+                {- if $p.title != null -}
+                {: $p.title :}
+                {- else -}
+                未命名文章
+                {- end -}
+              </h2>
+
+              {- with $p.description -}
+              <p class="blog-card-excerpt">
+                {: this :}
+              </p>
+              {- end -}
+
+              {- with $p.tags -}
+              <div class="blog-card-tags">
+                {- for $tag : this -}
+                <span class="tag-pill">{: $tag :}</span>
+                {- end -}
+              </div>
+              {- end -}
+
+              <div class="blog-card-meta">
+                {- with $p.date -}
+                <span class="blog-card-date">{: this :}</span>
+                {- end -}
+
+                <!-- add by js -->
+                <!-- <span class="blog-card-sep">·</span> -->
+                <!-- <span class="blog-card-read"></span> -->
+
+                {- with $p.lang -}
+                <span class="blog-card-sep">·</span>
+                <span class="blog-card-lang">{: this :}</span>
+                {- end -}
+
+                {- with $p.group -}
+                <div data-group="{: this :}"></div>
+                {- end -}
+              </div>
+            </div>
+
+            <div class="blog-card-arrow">➜</div>
+          </a>
+          {- end -}
+        </section>
+      </div>
     </div>
   </main>
-
-  {- include "footer" -}
 </body>
