@@ -15,15 +15,46 @@
         <section class="blog-header fade-in">
           <div class="blog-header-main">
             <h1 class="blog-title-en">博客列表</h1>
-            <!-- <p class="blog-header-meta">
-              Hello World.
-            </p> -->
           </div>
 
-          <a href="blog" class="blog-header-link">
-            查找博客 →
-          </a>
+          <!-- search form -->
+          <div class="blog-search-container">
+            <form class="blog-search-form" id="blog-search-form">
+              <input type="text" class="blog-search-input" id="blog-search-input" placeholder="搜索博客文章...">
+              <button type="button" class="blog-search-button" id="blog-search-button">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                    fill="currentColor" />
+                </svg>
+              </button>
+
+              <button type="button" class="search-clear-button" id="search-clear-button" style="display: none;">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </form>
+          </div>
         </section>
+
+        <div class="no-results-message" style="display: none;">
+          <div class="no-results-content">
+            <svg class="no-results-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15 9L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M9 9L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <h3>未找到相关文章</h3>
+            <p>没有找到与 "<strong id="search-query"></strong>" 相关的文章</p>
+            <p>请尝试其他关键词</p>
+          </div>
+        </div>
 
         <section class="blog-list fade-in" aria-label="博客列表" id="blogList">
           {- for $p : pages -}
