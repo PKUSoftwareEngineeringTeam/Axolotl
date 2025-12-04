@@ -66,11 +66,14 @@ function makeDraggable(element, onClick, onDragEnd) {
 
     const onEnd = (e) => {
         if (!isDragging) return;
+        if (e.type === 'mouseup') return;
+
         isDragging = false;
         element.classList.remove('dragging');
 
         document.removeEventListener('mousemove', onMove);
         document.removeEventListener('mouseup', onEnd);
+
         if (!hasMoved && onClick) {
             onClick();
         }
