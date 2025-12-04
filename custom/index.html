@@ -4,39 +4,38 @@
 <link rel="icon" href="/favicon.ico">
 
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="" class="nav-brand">
-                <span class="axolotl-gradient">{: site.title :}</span>
-            </a>
-
-            <ul class="nav-menu">
-                <li><a href="/" class="nav-link">首页</a></li>
-                <li><a href="/blog" class="nav-link">博客</a></li>
-                <li><a href="/about" class="nav-link">关于</a></li>
-                <li><a href="/contact" class="nav-link">联系</a></li>
-            </ul>
-        </nav>
-    </header>
+    {- include "nav" -}
 
     <div class="background-container">
         <div class="background-image"></div>
         <div class="overlay"></div>
-        <div class="particles" id="particles"></div>
+        <div class="leaves-container" id="leaves-container"></div>
     </div>
 
-    <div class="content">
-        <h1 class="title">{: site.title :}</h1>
+    <div class="content-container">
+        <div class="content">
+            <h1 class="title">{: site.title :}</h1>
+            <div data-subtitle="{: site.subtitle :}" id="data-subtitle"></div>
+            <h3 class="subtitle" id="typewriter-subtitle"></h3>
 
-        {- with site.description -}
-        <p class="subtitle">{: this :}</p>
-        {- end -}
-
-        <div class="buttons-container">
-            <a href="/blog" class="floating-btn btn-1">博客</a>
-            <a href="/about" class="floating-btn btn-2">关于</a>
-            <a href="/contact" class="floating-btn btn-3">联系</a>
-            <a href="https://github.com/PKUSoftwareEngineeringTeam" class="floating-btn btn-4">了解Allay</a>
+            <div class="buttons-container">
+                <a href="/blog" class="floating-btn btn-1">
+                    <i class="fas fa-book-open"></i>
+                    博客
+                </a>
+                <a href="/about" class="floating-btn btn-2">
+                    <i class="fas fa-info-circle"></i>
+                    关于
+                </a>
+                <a href="/contact" class="floating-btn btn-3">
+                    <i class="fas fa-comments"></i>
+                    联系
+                </a>
+                <a href="https://github.com/PKUSoftwareEngineeringTeam" class="floating-btn btn-4">
+                    <i class="fab fa-github"></i>
+                    了解Allay
+                </a>
+            </div>
         </div>
     </div>
 
