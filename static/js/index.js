@@ -33,7 +33,7 @@ function listenHeaderAndContent() {
     const content = document.querySelector('.content');
     const background = document.querySelector('.background-image');
 
-    const isResponsiveMode = () => window.innerWidth <= 500;
+    const isResponsiveMode = () => window.innerWidth <= 768;
 
     function checkHeaderState() {
         if (isResponsiveMode()) {
@@ -62,11 +62,11 @@ function listenHeaderAndContent() {
     });
 
     header.addEventListener('mouseleave', () => {
+        if (isResponsiveMode()) return;
         header.classList.remove('visible');
     });
 
     content.addEventListener('mouseleave', () => {
-        if (isResponsiveMode()) return;
         background.classList.remove('deactive');
     });
 
