@@ -96,7 +96,6 @@ body {
 .title {
     font-size: 3.5rem;
     font-weight: 700;
-    color: #333;
     margin-bottom: 2rem;
     background: linear-gradient(135deg, var(--title-1) 0%, var(--title-2) 100%);
     -webkit-background-clip: text;
@@ -104,6 +103,8 @@ body {
     background-clip: text;
     letter-spacing: -0.5px;
     line-height: 1.2;
+    background-size: 200% 200%;
+    animation: gradientBreathe 3s ease-in-out infinite alternate;
 }
 
 .subtitle {
@@ -261,6 +262,16 @@ body {
 
 .floating-btn:hover::before {
     opacity: 1;
+}
+
+@keyframes gradientBreathe {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 @keyframes fadeIn {
