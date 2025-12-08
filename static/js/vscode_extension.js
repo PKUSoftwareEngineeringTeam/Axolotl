@@ -18,7 +18,16 @@ window.addEventListener('click', (event) => {
     if (!link || !link.href) 
         return;
 
+    const isLocal = (hostname) => hostname === 'localhost' || hostname === '127.0.0.1';
+
     if (link.hostname !== window.location.hostname) {
+
+        if (isLocal(link.hostname) && isLocal(window.location.hostname)) {
+            return;
+        }
+
+        console.log('link.hostname:', link.hostname);
+        console.log('window.location.hostname:', window.location.hostname);
         
         event.preventDefault();
         console.log('Allay Preview: Intercepted external link:', link.href);
